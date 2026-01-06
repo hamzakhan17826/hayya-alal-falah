@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "alvi-nastaleeq-regular";
+  src: url("/fonts/alvi-nastaleeq-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "gandhara-suls-regular";
+  src: url("/fonts/gandhara-suls-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "jameel-noori-nastaleeq-kasheeda";
+  src: url("/fonts/jameel-noori-nastaleeq-kasheeda.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ul-sajid-heading-regular";
+  src: url("/fonts/ul-sajid-heading-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -20,6 +45,10 @@
   --color-border: var(--color-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-alvi: "alvi-nastaleeq-regular";
+  --font-gandhara: "gandhara-suls-regular";
+  --font-jameel: "jameel-noori-nastaleeq-kasheeda";
+  --font-ul-sajid: "ul-sajid-heading-regular";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,20 +78,66 @@
 }
 
 @layer utilities {
-  .animate-slide-from-left {
-    animation: slideInFromLeft 0.9s ease-out;
+  .animate-from-top {
+    animation: fromTop 0.8s ease-out;
+  }
+  .animate-from-right {
+    animation: fromRight 0.8s ease-out;
+  }
+  .animate-from-bottom {
+    animation: fromBottom 0.8s ease-out;
+  }
+  .animate-from-left {
+    animation: fromLeft 0.9s ease-out;
+  }
+  .animate-slide-from-right {
+    animation: slideFromRight 0.8s ease-out;
   }
 }
 
-@keyframes slideInFromLeft {
+@keyframes fromTop {
   from {
     opacity: 0;
-    transform: translateX(-200px);
-    filter: blur(5px);
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(30deg) rotateZ(-5deg)
+      translateX(200px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(30deg) rotateZ(-5deg) translateX(0);
     filter: blur(0);
   }
 }
